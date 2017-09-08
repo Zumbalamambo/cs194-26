@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<style>
+  body {
+    padding: 100px;
+    width: 1000px;
+    margin: auto;
+    text-align: left;
+    font-weight: 300;
+    font-family: 'Open Sans', sans-serif;
+    color: #121212;
+  }
+  h1, h2, h3, h4 {
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+</style>
+<title>CS194-26: Image Manipulation and Computational Photography</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link href="https://fonts.googleapis.com/css?family=Open+Sans|Source+Sans+Pro" rel="stylesheet">
+</head>
+
+
+<body>
+
+<h1 align="middle">CS194-26: Image Manipulation and Computational Photography, Fall 2017</h1>
+<h1 align="middle">Project 1: Images of the Russian Empire</h1>
+<h2 align="middle">Karl Cempron, CS194-26-aeg</h2>
+
+<br><br>
+
+<div>
+
+<h2 align="middle">Overview</h2>
+<p>The goal of this assignment is to take the digitized Prokudin-Gorskii glass plate images and, using image processing techniques, automatically produce a color image with as few visual artifacts as possible. In order to do this, you will need to extract the three color channel images, place them on top of each other, and align them so that they form a single RGB color image.</p>
+
+<h2 align="middle">Section I: Implementation</h2>
+
+<h3 align="middle">Part 1: Single-Scale</h3>
+
+<p>There are many image aligning methods, but the one used is to compare the R, G, and B channels to find matches in intensity. To align the images, the G and R channels are being compared against the B channel respectively in some x, y displacement. I chose to use a [-15, 15] pixel window (left, right, up, and down). The alignment algorithm I used was Sum of Squared Differences (SSD): </p>
+
+<p>ssd = sum( sum( (image1 - image2) ^ 2 ) ) 
+The smaller the value, the smaller the difference and therefore a better alignment.</p>
+
+<div align="middle">
+  <table style="width=100%">
+    <tr>
+      <td>
+        <img src="images/out_edge_monastery.jpeg" align="middle" width="400px"/>
+        <figcaption align="middle">Monastery G: [-3, 2], R: [3, 2]</figcaption>
+      </td>
+      <td>
+        <img src="images/out_edge_cathedral.jpeg" align="middle" width="400px"/>
+        <figcaption align="middle">Cathedral G: [5, 2], R: [12, 3]</figcaption>
+      </td>
+    </tr>
+    <br>
+    <tr>
+      <td>
+        <img src="images/out_edge_settlers.jpeg" align="middle" width="400px"/>
+        <figcaption align="middle">Settlers G: [7, 0], R: [14, -1]</figcaption>
+      </td>
+      <td>
+        <img src="images/out_edge_nativity.jpeg" align="middle" width="400px"/>
+        <figcaption align="middle">Nativity G: [3, 1], R: [7, 1]</figcaption>
+      </td>
+    </tr>
+  </table>
+</div>
+
+
+<h3 align="middle">Part 2: Multi-Scale</h3>
+
+<p>Exhaustive search will become prohibitively expensive if the pixel displacement is too large (which will be the case for high-resolution glass plate scans). In this case, I implemented a faster search procedure, image pyramid and the processing is done sequentially starting from the coarsest scale (smallest image) and going down the pyramid, updating your estimate as you go. It is very easy to implement by adding recursive calls to my original single-scale implementation.</p>
+
+<div align="middle">
+  <table style="width=100%">
+    <tr>
+      <td>
+        <img src="images/out_edge_harvesters.jpeg" align="middle" width="400px"/>
+        <figcaption align="middle">Harvesters G: [60, 18], R: [124, 17]</figcaption>
+      </td>
+      <td>
+        <img src="images/out_edge_icon.jpeg" align="middle" width="400px"/>
+        <figcaption align="middle">Icon G: [40, 18], R: [89, 24]</figcaption>
+      </td>
+    </tr>
+    <br>
+    <tr>
+      <td>
+        <img src="images/out_edge_lady.jpeg" align="middle" width="400px"/>
+        <figcaption align="middle">Lady G: [48, 8], R: [112, 10]</figcaption>
+      </td>
+      <td>
+        <img src="images/out_edge_self_portrait.jpeg" align="middle" width="400px"/>
+        <figcaption align="middle">Nativity G: [77, 29], R: [175, 37]</figcaption>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<div align="middle">
+  <table style="width=100%">
+    <tr>
+      <td>
+        <img src="images/out_edge_three_generations.jpeg" align="middle" width="400px"/>
+        <figcaption align="middle">Three Generations G: [49, 17], R: [108, 13]</figcaption>
+      </td>
+      <td>
+        <img src="images/out_edge_train.jpeg" align="middle" width="400px"/>
+        <figcaption align="middle">Train G: [42, 6], R: [85, 32]</figcaption>
+      </td>
+    </tr>
+    <br>
+    <tr>
+      <td>
+        <img src="images/out_edge_turkmen.jpeg" align="middle" width="400px"/>
+        <figcaption align="middle">Turkmen G: [56, 22], R: [117, 30]</figcaption>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<h2 align="middle">Section II: Bells and Whistles</h2>
+
+<h3 align="middle">Edge Detection</h3>
+
+<p>Edge detection does a comparison between the changes in intensities. There are many approaches to edge detection such as Roberts detection. This approach was very useful for images such as Emir and Village which had r g b values that did not do well with either SSD or NCC due to varying degrees of brightness. By using edge detection, we are better able to align such images.</p>
+
+<div align="middle">
+  <table style="width=100%">
+    <tr>
+      <td>
+        <img src="images/out_no_edge_emir.jpeg" align="middle" width="400px"/>
+        <figcaption align="middle">Before</figcaption>
+      </td>
+      <td>
+        <img src="images/out_edge_emir.jpeg" align="middle" width="400px"/>
+        <figcaption align="middle">After G: [48, 23], R: [-83, -70]</figcaption>
+      </td>
+    </tr>
+    <br>
+    <tr>
+      <td>
+        <img src="images/out_no_edge_village.jpeg" align="middle" width="400px"/>
+        <figcaption align="middle">Before</figcaption>
+      </td>
+      <td>
+        <img src="images/out_edge_village.jpeg" align="middle" width="400px"/>
+        <figcaption align="middle">After G: [64, 12], R: [66, -38]</figcaption>
+      </td>
+    </tr>
+  </table>
+</div>
+
+<h3 align="middle">Additional Images</h3>
+
+<div align="middle">
+  <table style="width=100%">
+    <tr>
+      <td>
+        <img src="images/out_edge_hut.jpeg" align="middle" width="400px"/>
+        <figcaption align="middle">Hut G: [51, 51], R: [110, 67]</figcaption>
+      </td>
+      <td>
+        <img src="images/out_edge_squad.jpeg" align="middle" width="400px"/>
+        <figcaption align="middle">Squad G: [48, -16], R: [86, -54]</figcaption>
+      </td>
+    </tr>
+    <br>
+    <tr>
+      <td>
+        <img src="images/out_edge_beans.jpeg" align="middle" width="400px"/>
+        <figcaption align="middle">Beans G: [40, -37], R: [108, -80]</figcaption>
+      </td>
+    </tr>
+  </table>
+</div>
+</body>
+</html>

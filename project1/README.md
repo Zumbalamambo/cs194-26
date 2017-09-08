@@ -1,0 +1,2 @@
+# Project 1
+This python file contains an align method that aligns two images (as an array) together using SSD along with the utility method shift which shifts the image based on the resulting displacement. There is also a pyramid_align method which uses the align method and image resizing to handle higher resolution images.
