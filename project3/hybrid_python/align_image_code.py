@@ -64,13 +64,13 @@ def match_img_size(im1, im2):
     h1, w1, c1 = im1.shape
     h2, w2, c2 = im2.shape
     if h1 < h2:
-        im2 = im2[np.floor((h2-h1)/2.) : -np.ceil((h2-h1)/2.), :, :]
+        im2 = im2[int(np.floor((h2-h1)/2.)) : int(-np.ceil((h2-h1)/2.)), :, :]
     elif h1 > h2:
-        im1 = im1[np.floor((h1-h2)/2.) : -np.ceil((h1-h2)/2.), :, :]
+        im1 = im1[int(np.floor((h1-h2)/2.)) : int(-np.ceil((h1-h2)/2.)), :, :]
     if w1 < w2:
-        im2 = im2[:, np.floor((w2-w1)/2.) : -np.ceil((w2-w1)/2.), :]
+        im2 = im2[:, int(np.floor((w2-w1)/2.)) : int(-np.ceil((w2-w1)/2.)), :]
     elif w1 > w2:
-        im1 = im1[:, np.floor((w1-w2)/2.) : -np.ceil((w1-w2)/2.), :]
+        im1 = im1[:, int(np.floor((w1-w2)/2.)) : int(-np.ceil((w1-w2)/2.)), :]
     assert im1.shape == im2.shape
     return im1, im2
 

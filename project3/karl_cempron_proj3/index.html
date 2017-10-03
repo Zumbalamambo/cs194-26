@@ -1,0 +1,1076 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>CS194-26: Frequencies and Gradients</title>
+<!--
+Stacked Template
+http://www.templatemo.com/tm-505-stacked
+-->
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/templatemo-style.css">
+
+        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <nav class="nav">
+          <div class="burger">
+            <div class="burger__patty"></div>
+          </div>
+
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="#1" class="nav__link c-blue"><img src="img/home-icon.png" alt=""></a>
+            </li>
+            <li class="nav__item">
+              <a href="#2" class="nav__link c-yellow scrolly"><img src="img/one-icon.png" alt=""></a>
+            </li>
+            <li class="nav__item">
+              <a href="#10" class="nav__link c-yellow scrolly"><img src="img/two-icon.png" alt=""></a>
+            </li>
+          </ul>
+        </nav>
+        <section class="panel b-yellow" id="1">
+          <article class="panel__wrapper">
+            <div class="panel__content">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-8 col-md-offset-2">
+                    <div class="about-content">
+                      <div class="heading">
+                        <h4>CS194-26: Frequencies and Gradients </h4>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="about-box-content">
+                            <img src="img/about-image.png" alt="">
+                          </div>
+                        </div>
+                        <div class="col-md-7 col-md-offset-5">
+                          <div class="about-box-text">
+                            <h4>Karl Cempron<br> cs194-26:aeg</h4>
+                            <p>This project will highlight topics in hybrid blending, multiresolution blending, and poisson blending. Further details can be found at <a href="http://inst.eecs.berkeley.edu/~cs194-26/fa17/hw/proj3/index.html" target="_blank">cs194-26/project3</a>.</p>
+                            <div class="primary-button">
+                              <a href="#2">Let's Start!</a>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="panel b-blue" id="2">
+          <article class="panel__wrapper">
+            <div class="panel__content">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-8 col-md-offset-2">
+                    <div class="home-content">
+                      <div class="home-heading">
+                        <h1><em>Part 1.1</em> Sharpening</h1>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="home-box-content">
+                            <div class="left-text">
+                              <h4>The <em>Breakdown</em></h4>
+                              <p>As a warm up, I thought that I would take my
+                              "professional" profile picture and try to make
+                              myself look sharper! The process starts by taking
+                              the original image and smoothening it via a gaussian
+                              filter. The detailed image is than extracted from original - smoothed. Finally we re-add the detailed image (times some alpha "a") back to the original. </p>
+                              <div class="primary-button">
+                                <a href="#3">Take a look!</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+        <section class="panel b-red" id="3">
+          <article class="panel__wrapper">
+            <div class="panel__content">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-8 col-md-offset-2">
+                    <div class="projects-content">
+                      <div class="heading">
+                        <h4>Part 1.1 Images</h4>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="owl-carousel owl-theme projects-container">
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_1/karl_headshot.png" data-lightbox="image-1"><img src="img/1_1/karl_headshot.png" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Original Image</h4>
+                                  <p>Decent photo but it isn't sharp enough to attract LinkedIn recruiters.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_1/karl_sharpened10.png" data-lightbox="image-1"><img src="img/1_1/karl_sharpened10.png" alt=""></a>
+                                <div class="text-content">
+                                  <h4>First Application</h4>
+                                  <p>We set a = 10 and get a slightly vibrant red on the jacket as a result.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_1/karl_sharpened20.png" data-lightbox="image-1"><img src="img/1_1/karl_sharpened20.png" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Second Iteration</h4>
+                                  <p>We go with a = 20 and notice that the edges around the face are
+                                  more prominent.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_1/karl_sharpened100.png" data-lightbox="image-1"><img src="img/1_1/karl_sharpened100.png" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Too Sharp Bro</h4>
+                                  <p>We push things with a = 100 and realize that too much of a good thing is not good. The image becomes apparently grain-like as seen on the face.</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="panel b-blue" id="4">
+          <article class="panel__wrapper">
+            <div class="panel__content">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-8 col-md-offset-2">
+                    <div class="home-content">
+                      <div class="home-heading">
+                        <h1><em>Part 1.2</em> Hybrid Blending</h1>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="home-box-content">
+                            <div class="left-text">
+                              <h4>The <em>Breakdown</em></h4>
+                              <p>Hybrid images are static images that change in interpretation as a function of the viewing distance. The basic idea is that high frequency tends to dominate perception when it is available, but, at a distance, only the low frequency (smooth) part of the signal can be seen. By blending the high frequency portion of one image with the low-frequency portion of another, you get a hybrid image that leads to different interpretations at different distances. </p>
+                              <div class="primary-button">
+                                <a href="#5">Take a look!</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+        <section class="panel b-red" id="5">
+          <article class="panel__wrapper">
+            <div class="panel__content">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-8 col-md-offset-2">
+                    <div class="projects-content">
+                      <div class="heading">
+                        <h4>Part 1.2 Images</h4>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="owl-carousel owl-theme projects-container">
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_1/karl_headshot.png" data-lightbox="image-1"><img src="img/1_1/karl_headshot.png" alt=""></a>
+                                <div class="text-content">
+                                  <h4>First Image</h4>
+                                  <p>Back again with this profile picture but this time we are looking to blend me with something else to make me more appealing.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_2/karl_orig_fft.png" data-lightbox="image-1"><img src="img/1_2/karl_orig_fft.png" alt=""></a>
+                                <div class="text-content">
+                                  <h4>First Image FFT</h4>
+                                  <p>Good ol' log magnitude of Fourier Transform for the first image.
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_2/karl_fft.png" data-lightbox="image-1"><img src="img/1_2/karl_fft.png" alt=""></a>
+                                <div class="text-content">
+                                  <h4>First Image filtered FFT</h4>
+                                  <p>This is the log magnitude of Fourier Transform for the first image after applying the low pass filter.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_2/akita.jpg" data-lightbox="image-1"><img src="img/1_2/akita.jpg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Second Image</h4>
+                                  <p>I figured that since people like dogs, I should blend myself with an Akita.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_2/akita_orig_fft.png" data-lightbox="image-1"><img src="img/1_2/akita_orig_fft.png" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Second Image FFT</h4>
+                                  <p>Good ol' log magnitude of Fourier Transform for the second image.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_2/akita_fft.png" data-lightbox="image-1"><img src="img/1_2/akita_fft.png" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Second Image filtered FFT</h4>
+                                  <p>This is the log magnitude of Fourier Transform for the second image after applying the high pass filter.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_2/dogman.png" data-lightbox="image-1"><img src="img/1_2/dogman.png" alt=""></a>
+                                <div class="text-content">
+                                  <h4>The Chimera Fusion</h4>
+                                  <p>This is what you get when you put me and dog together. If you look closely, you might just see the pupper.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_2/dogman_fft.png" data-lightbox="image-1"><img src="img/1_2/dogman_fft.png" alt=""></a>
+                                <div class="text-content">
+                                  <h4>The Chimera FFT</h4>
+                                  <p>This is the log magnitude of Fourier Transform for the hybrid image.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_2/celeb.png" data-lightbox="image-1"><img src="img/1_2/celeb.png" alt=""></a>
+                                <div class="text-content">
+                                  <h4>A Good Celeb Blend</h4>
+                                  <p>Here's an example of blending Mark Wahlberg and Matt Damon together. They already look the same in real life, so the blend was easy.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_2/lookalike.png" data-lightbox="image-1"><img src="img/1_2/lookalike.png" alt=""></a>
+                                <div class="text-content">
+                                  <h4>A Bad Celeb Blend</h4>
+                                  <p>Here's an example of blending Joseph Gordon-Levitt and myself. I was hoping to get good results but I guess we only look alike in real life.</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="panel b-blue" id="6">
+          <article class="panel__wrapper">
+            <div class="panel__content">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-8 col-md-offset-2">
+                    <div class="home-content">
+                      <div class="home-heading">
+                        <h1><em>Part 1.3</em> Gaussian and Laplacian Stacks</h1>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="home-box-content">
+                            <div class="left-text">
+                              <h4>The <em>Breakdown</em></h4>
+                              <p> For this part, we take an image and create two stacks through continous application of the
+                              gaussian filter on the image and then subtracting the original from the filtered image to get the laplacian. Through this process we are able to see
+                              the high pass image and low pass image separately.</p>
+                              <div class="primary-button">
+                                <a href="#7">Take a look!</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+        <section class="panel b-red" id="7">
+          <article class="panel__wrapper">
+            <div class="panel__content">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-8 col-md-offset-2">
+                    <div class="projects-content">
+                      <div class="heading">
+                        <h4>Part 1.3 Images</h4>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="owl-carousel owl-theme projects-container">
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_3/dali.jpg" data-lightbox="image-1"><img src="img/1_3/dali.jpg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>A Painterly Example</h4>
+                                  <p>This is the original image of one of Dali's paintings.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_3/gauss/dali_gaus0out_stack.jpeg" data-lightbox="image-1"><img src="img/1_3/gauss/dali_gaus0out_stack.jpeg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Dali Gaussian, sigma = 1</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_3/gauss/dali_gaus1out_stack.jpeg" data-lightbox="image-1"><img src="img/1_3/gauss/dali_gaus1out_stack.jpeg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Dali Gaussian, sigma = 2</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_3/gauss/dali_gaus2out_stack.jpeg" data-lightbox="image-1"><img src="img/1_3/gauss/dali_gaus2out_stack.jpeg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Dali Gaussian, sigma = 4</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_3/gauss/dali_gaus3out_stack.jpeg" data-lightbox="image-1"><img src="img/1_3/gauss/dali_gaus3out_stack.jpeg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Dali Gaussian, sigma = 8</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_3/gauss/dali_gaus4out_stack.jpeg" data-lightbox="image-1"><img src="img/1_3/gauss/dali_gaus4out_stack.jpeg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Dali Gaussian, sigma = 16</h4>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_3/laps/dali_lap0out_stack.jpeg" data-lightbox="image-1"><img src="img/1_3/laps/dali_lap0out_stack.jpeg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Dali Laplacian, sigma = 1</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_3/laps/dali_lap1out_stack.jpeg" data-lightbox="image-1"><img src="img/1_3/laps/dali_lap1out_stack.jpeg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Dali Laplacian, sigma = 2</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_3/laps/dali_lap2out_stack.jpeg" data-lightbox="image-1"><img src="img/1_3/laps/dali_lap2out_stack.jpeg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Dali Laplacian, sigma = 4</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_3/laps/dali_lap3out_stack.jpeg" data-lightbox="image-1"><img src="img/1_3/laps/dali_lap3out_stack.jpeg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Dali Laplacian, sigma = 8</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_3/laps/dali_lap4out_stack.jpeg" data-lightbox="image-1"><img src="img/1_3/laps/dali_lap4out_stack.jpeg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Dali Laplacian, sigma = 16</h4>
+                                </div>
+                              </div>
+                            </div>
+
+
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_2/dogman.png" data-lightbox="image-1"><img src="img/1_2/dogman.png" alt=""></a>
+                                <div class="text-content">
+                                  <h4>The Chimera Fusion</h4>
+                                  <p>Let's try to deconstruct this failed experiment.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_3/gauss/dogman_gaus0out_stack.jpeg" data-lightbox="image-1"><img src="img/1_3/gauss/dogman_gaus0out_stack.jpeg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Chimera Gaussian, sigma = 1</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_3/gauss/dogman_gaus1out_stack.jpeg" data-lightbox="image-1"><img src="img/1_3/gauss/dogman_gaus1out_stack.jpeg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Chimera Gaussian, sigma = 2</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_3/gauss/dogman_gaus2out_stack.jpeg" data-lightbox="image-1"><img src="img/1_3/gauss/dogman_gaus2out_stack.jpeg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Chimera Gaussian, sigma = 4</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_3/gauss/dogman_gaus3out_stack.jpeg" data-lightbox="image-1"><img src="img/1_3/gauss/dogman_gaus3out_stack.jpeg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Chimera Gaussian, sigma = 8</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_3/gauss/dogman_gaus4out_stack.jpeg" data-lightbox="image-1"><img src="img/1_3/gauss/dogman_gaus4out_stack.jpeg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Chimera Gaussian, sigma = 16</h4>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_3/laps/dogman_lap0out_stack.jpeg" data-lightbox="image-1"><img src="img/1_3/laps/dogman_lap0out_stack.jpeg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Chimera Laplacian, sigma = 1</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_3/laps/dogman_lap1out_stack.jpeg" data-lightbox="image-1"><img src="img/1_3/laps/dogman_lap1out_stack.jpeg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Chimera Laplacian, sigma = 2</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_3/laps/dogman_lap2out_stack.jpeg" data-lightbox="image-1"><img src="img/1_3/laps/dogman_lap2out_stack.jpeg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Chimera Laplacian, sigma = 4</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_3/laps/dogman_lap3out_stack.jpeg" data-lightbox="image-1"><img src="img/1_3/laps/dogman_lap3out_stack.jpeg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Chimera Laplacian, sigma = 8</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_3/laps/dogman_lap4out_stack.jpeg" data-lightbox="image-1"><img src="img/1_3/laps/dogman_lap4out_stack.jpeg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Chimera Laplacian, sigma = 16</h4>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="panel b-blue" id="8">
+          <article class="panel__wrapper">
+            <div class="panel__content">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-8 col-md-offset-2">
+                    <div class="home-content">
+                      <div class="home-heading">
+                        <h1><em>Part 1.4</em> Multiresolution Blending</h1>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="home-box-content">
+                            <div class="left-text">
+                              <h4>The <em>Breakdown</em></h4>
+                              <p> The goal of this part of the project is to blend two images seamlessly using a multi resolution blending. An image spline is a smooth seam joining two image together by gently distorting them. Multiresolution blending computes a gentle seam between the two images seperately at each band of image frequencies, resulting in a much smoother seam.</p>
+                              <div class="primary-button">
+                                <a href="#9">Take a look!</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+        <section class="panel b-red" id="9">
+          <article class="panel__wrapper">
+            <div class="panel__content">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-8 col-md-offset-2">
+                    <div class="projects-content">
+                      <div class="heading">
+                        <h4>Part 1.4 Images</h4>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="owl-carousel owl-theme projects-container">
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_4/apple.jpeg" data-lightbox="image-1"><img src="img/1_4/apple.jpeg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>The Apple</h4>
+                                  <p>We start things off with a basic example using an apple as the left side of the blend.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_4/orange.jpeg" data-lightbox="image-1"><img src="img/1_4/orange.jpeg" alt="">
+                                </a>
+                                <div class="text-content">
+                                  <h4>The Orange</h4>
+                                  <p>With the orange on the right side, we hope to have a nice blend between the two.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_4/end/blended_orapple0out_stack.jpeg" data-lightbox="image-1"><img src="img/1_4/end/blended_orapple0out_stack.jpeg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>The Dark Oraple</h4>
+                                  <p>They do look blended though the image turned out darker as a result of not normalizing the pixels.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_4/end/blended_gamchano0out_stack.jpg" data-lightbox="image-1"><img src="img/1_4/end/blended_gamchano0out_stack.jpg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Childish x Chance</h4>
+                                  <p>One can ony dream of the day that these two artists release a joint album. In the meantime, here is a blend of them.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_4/end/blended_fire0out_stack.jpg" data-lightbox="image-1"><img src="img/1_4/end/blended_fire0out_stack.jpg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Kendrick x Cole</h4>
+                                  <p>Here is another dynamic duo in hip hop!
+                                  Let's take a deeper look at the blending.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_4/mask_1/kendrick0out_stack.jpg" data-lightbox="image-1"><img src="img/1_4/mask_1/kendrick0out_stack.jpg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Kendrick Mask 1</h4>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_4/mask_1/kendrick1out_stack.jpg" data-lightbox="image-1"><img src="img/1_4/mask_1/kendrick1out_stack.jpg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Kendrick Mask 2</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_4/mask_1/kendrick2out_stack.jpg" data-lightbox="image-1"><img src="img/1_4/mask_1/kendrick2out_stack.jpg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Kendrick Mask 3</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_4/mask_1/kendrick3out_stack.jpg" data-lightbox="image-1"><img src="img/1_4/mask_1/kendrick3out_stack.jpg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Kendrick Mask 4</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_4/mask_1/kendrick4out_stack.jpg" data-lightbox="image-1"><img src="img/1_4/mask_1/kendrick4out_stack.jpg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Kendrick Mask 5</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_4/mask_2/jcole0out_stack.jpg" data-lightbox="image-1"><img src="img/1_4/mask_2/jcole0out_stack.jpg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Cole Mask 1</h4>
+                                </div>
+                              </div>
+                            </div>
+
+
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_4/mask_2/jcole1out_stack.jpg" data-lightbox="image-1"><img src="img/1_4/mask_2/jcole1out_stack.jpg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Cole Mask 2</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_4/mask_2/jcole2out_stack.jpg" data-lightbox="image-1"><img src="img/1_4/mask_2/jcole2out_stack.jpg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Cole Mask 3</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_4/mask_2/jcole3out_stack.jpg" data-lightbox="image-1"><img src="img/1_4/mask_2/jcole3out_stack.jpg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Cole Mask 4</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_4/mask_2/jcole4out_stack.jpg" data-lightbox="image-1"><img src="img/1_4/mask_2/jcole4out_stack.jpg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Cole Mask 5</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_4/end/layer_fire0out_stack.jpg" data-lightbox="image-1"><img src="img/1_4/end/layer_fire0out_stack.jpg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Hip Hop Blend 1</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_4/end/layer_fire1out_stack.jpg" data-lightbox="image-1"><img src="img/1_4/end/layer_fire1out_stack.jpg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Hip Hop Blend 2</h4>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_4/end/layer_fire2out_stack.jpg" data-lightbox="image-1"><img src="img/1_4/end/layer_fire2out_stack.jpg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Hip Hop Blend 3</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_4/end/layer_fire3out_stack.jpg" data-lightbox="image-1"><img src="img/1_4/end/layer_fire3out_stack.jpg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Hip Hop Blend 4</h4>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_4/end/layer_fire4out_stack.jpg" data-lightbox="image-1"><img src="img/1_4/end/layer_fire4out_stack.jpg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Hip Hop Blend 5</h4>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="panel b-blue" id="10">
+          <article class="panel__wrapper">
+            <div class="panel__content">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-8 col-md-offset-2">
+                    <div class="home-content">
+                      <div class="home-heading">
+                        <h1><em>Part 2.1</em> Gradient Domain Processing</h1>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="home-box-content">
+                            <div class="left-text">
+                              <h4>The <em>Breakdown</em></h4>
+                              <p>This project explores gradient-domain processing, a simple technique with a broad set of applications including blending, tone-mapping, and non-photorealistic rendering. For this warmup, we'll compute the x and y gradients from an image s, then use all the gradients, plus one pixel intensity, to reconstruct an image v. </p>
+                              <div class="primary-button">
+                                <a href="#11">Take a look!</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+        <section class="panel b-red" id="11">
+          <article class="panel__wrapper">
+            <div class="panel__content">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-8 col-md-offset-2">
+                    <div class="projects-content">
+                      <div class="heading">
+                        <h4>Part 2.1 Images</h4>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="owl-carousel owl-theme projects-container">
+                            <div>
+                              <div class="project-item">
+                                <a href="img/2_1/toy_problem.png" data-lightbox="image-1"><img src="img/2_1/toy_problem.png" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Original Image</h4>
+                                  <p>Here we have a grayscale image from the classic movie, Toy Story.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/2_1/toy_problem_reconst.png" data-lightbox="image-1"><img src="img/2_1/toy_problem_reconst.png" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Result</h4>
+                                  <p>Here the result looks the same as the original.</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="panel b-blue" id="12">
+          <article class="panel__wrapper">
+            <div class="panel__content">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-8 col-md-offset-2">
+                    <div class="home-content">
+                      <div class="home-heading">
+                        <h1><em>Part 2.2</em> Poisson Blending</h1>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="home-box-content">
+                            <div class="left-text">
+                              <h4>The <em>Breakdown</em></h4>
+                              <p>For this part, we want to seamlessly blend an object or texture from a source image into a target image. The simplest method would be to just directly apply the pixels from one image into the other. Unfortunately, this will create very noticeable seams, even if the backgrounds are well-matched. Instead we will look at a method known as poisson blending which retrieves the gradient of the source image and then blends the intensity values of the outer region from the target image to construct a better blend. </p>
+                              <div class="primary-button">
+                                <a href="#13">Take a look!</a>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+        <section class="panel b-red" id="13">
+          <article class="panel__wrapper">
+            <div class="panel__content">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-8 col-md-offset-2">
+                    <div class="projects-content">
+                      <div class="heading">
+                        <h4>Part 2.2 Images</h4>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="owl-carousel owl-theme projects-container">
+                            <div>
+                              <div class="project-item">
+                                <a href="img/2_2/camel_newborn_dromedary.jpg" data-lightbox="image-1"><img src="img/2_2/camel_newborn_dromedary.jpg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Camel Source</h4>
+                                  <p>Let's take this touching scene and spice it up.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/2_2/target_star_wars.png" data-lightbox="image-1"><img src="img/2_2/target_star_wars.png" alt=""></a>
+                                <div class="text-content">
+                                  <h4>The Force Awakens</h4>
+                                  <p>This scene seems appropriate.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/2_2/naive_star_wars.png" data-lightbox="image-1"><img src="img/2_2/naive_star_wars.png" alt=""></a>
+                                <div class="text-content">
+                                  <h4>A Naive Job</h4>
+                                  <p>Though it may fool some, this image
+                                  could potentially be improved. The color of sand around the sand is quite different than that in the movie scene.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/2_2/blended_star_wars.png" data-lightbox="image-1"><img src="img/2_2/blended_star_wars.png" alt=""></a>
+                                <div class="text-content">
+                                  <h4>A Poisson Job</h4>
+                                  <p>An improvement from the previous approach. There are some parts of the image that aren't fully blended. This could be due to some minor changes in color around the border of the source image. </p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/2_2/penguin-chick.jpeg" data-lightbox="image-1"><img src="img/2_2/penguin-chick.jpeg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Penguin Example</h4>
+                                  <p>Let's take this cute penguin and place him somewhere.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/2_2/target_penguin.png" data-lightbox="image-1"><img src="img/2_2/target_penguin.png" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Penguin's Target Location</h4>
+                                  <p>A snowy region.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/2_2/blended_penguin.png" data-lightbox="image-1"><img src="img/2_2/blended_penguin.png" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Poisson result</h4>
+                                  <p>The result of the blend went well as expected since the source and target did not differ that much in pixel intensity.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/2_2/source_harry_potter.png" data-lightbox="image-1"><img src="img/2_2/source_harry_potter.png" alt=""></a>
+                                <div class="text-content">
+                                  <h4>A Potential Bad Blend</h4>
+                                  <p>Here is a picture that we will try to paste and blend.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/2_2/target_harry_potter.png" data-lightbox="image-1"><img src="img/2_2/target_harry_potter.png" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Sad Boi Harry Potter</h4>
+                                  <p>Looks like Harry could use a fellow bro so let's try to add one.</p>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div>
+                              <div class="project-item">
+                                <a href="img/2_2/naive_harry_potter.png" data-lightbox="image-1"><img src="img/2_2/naive_harry_potter.png" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Naive Potter Bro</h4>
+                                  <p>The naive approach has displays very different color values making it not seamless.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/2_2/blended_harry_potter.png" data-lightbox="image-1"><img src="img/2_2/blended_harry_potter.png" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Bad Poisson Blend</h4>
+                                  <p>Despite the lower half of the image blending in properly,the overall gradient of the source causes the top half to be too dark.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_4/kendrick.jpg" data-lightbox="image-1"><img src="img/1_4/kendrick.jpg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Back to Kendrick</h4>
+                                  <p>Let's try to do some comparisons with the different blend techniques.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_4/jcole.jpg" data-lightbox="image-1"><img src="img/1_4/jcole.jpg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>Back to Cole</h4>
+                                  <p>For each blending technique, we will use similar masks such that the results will have some consistency.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/2_2/naive_rap.png" data-lightbox="image-1"><img src="img/2_2/naive_rap.png" alt=""></a>
+                                <div class="text-content">
+                                  <h4>A Naive Mixtape</h4>
+                                  <p>In this blend, there is apparant contrast differences and the edges don't seem to blend well at all.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/2_2/blended_rap.png" data-lightbox="image-1"><img src="img/2_2/blended_rap.png" alt=""></a>
+                                <div class="text-content">
+                                  <h4>A Poisson Mixtape</h4>
+                                  <p>While the contrast was adjusted via the gradient calculations, the edges still look obvious around the face.</p>
+                                </div>
+                              </div>
+                            </div>
+                            <div>
+                              <div class="project-item">
+                                <a href="img/1_4/end/blended_fire0out_stack.jpg" data-lightbox="image-1"><img src="img/1_4/end/blended_fire0out_stack.jpg" alt=""></a>
+                                <div class="text-content">
+                                  <h4>A Multires Mixtape</h4>
+                                  <p>While this blend has the largest difference from the original images, it also has better blending both in intensity and seamless edges.</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+
+
+        
+      
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+        <script src="js/vendor/bootstrap.min.js"></script>
+
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+        </script>
+    </body>
+</html>
