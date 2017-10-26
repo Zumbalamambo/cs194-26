@@ -1,0 +1,250 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>CS194-26: Face Morphing</title>
+<!--
+Short HTML Template
+-->
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="css/animate.min.css">
+        <link rel="stylesheet" href="css/easy-responsive-tabs.min.css">
+        <link rel="stylesheet" href="css/tabs.css">
+        <link rel="stylesheet" href="css/templatemo-style.css">
+
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+
+        <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <!-- Loadding page  -->
+    <div class="preloader">
+      <div class="spinner">
+        <div class="dot1"></div>
+        <div class="dot2"></div>
+      </div>
+    </div>
+    <!-- End Laoding page  -->
+
+    <!-- Begin HorizontalTab style 6 -->
+    <section class="section-full image-bg">
+
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-md-12">
+
+            <a href="index.html"><div class="responsive-logo hidden-lg hidden-md hidden-sm"><img src="img/logo.png"></div></a>
+            
+            <!-- Begin .HorizontalTab -->
+            <div class="VerticalTab VerticalTab_hash_scroll VerticalTab_6 tabs_ver_6">
+            
+              <ul class="resp-tabs-list hor_1">
+                <li class="tabs-1" data-tab-name="intro"><span class="tabs-text">Project Intro</span></li>
+                <li class="tabs-2" data-tab-name="correspondences"><span class="tabs-text">Defining Correspondences</span></li>
+                <li class="tabs-3" data-tab-name="midway"><span class="tabs-text">The Mid-Way Face</span></li>             
+                <li class="tabs-4" data-tab-name="morph"><span class="tabs-text">The Morph Sequence</span></li>
+                <li class="tabs-5" data-tab-name="mean"><span class="tabs-text">The Mean Face</span></li>
+                <li class="tabs-6" data-tab-name="caricatures"><span class="tabs-text">Caricatures</span></li>
+
+              </ul>
+              
+              <div class="resp-tabs-container hor_1 tabs_scroll">
+                
+                <div class="fc-tab-1">
+                
+                  <div class="home-container">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="left-content">
+                          <div class="left-line"></div>  
+                          <h2><em>Face Morphing</em></h2>
+                          <p> Karl Cempron: CS194-26-AEG </p>
+                          <p>The goal of this project is to produce a <b>visual morph</b> between two images. In this particular
+                            project, I define a correspondence between two faces, mapping facial features such as the eyes, mouth,
+                            nose, and hair shape. Along with the morphing of two faces, I find the <b>mean face</b> of
+                            a given population to make comparisons with my own facial features.</p>
+                          <div class="primary-button">
+                              <a href="http://inst.eecs.berkeley.edu/~cs194-26/fa17/hw/proj4/index.html" target="blank">Project Specs</a>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="right-content">
+                          <p style="font-size: 14pt; text-align: center;"><img src="gifs/morph_kai.gif" style="width: 100%">Can you guess who I morph into?</p>
+                          <p style="clear: both;">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+                
+                <div class="fc-tab-2">
+      
+                  <div class="about-container">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h2>Finding <em>Correspondences</em></h2>
+                        <div class="under-line"></div>
+                        <p>Given two images, we define the pairs of corresponding points by hand, specifically targetting features that exist in both faces. Ideally, having more corresponding pairs will create a better fit of the morph from image A to image B. In this example, I chose myself as Image A and George Clooney as Image B.</p>
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/kai_start.jpg" style="width: 100%">Image A</p>
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/george.jpg" style="width: 100%">Image B</p>
+                        <p style="clear: both;">
+                        <p>Here are the triangular meshes for each image using <b>60</b> points. Since the exterior of our face shapes matches already, I decided to focus primarily on the internal features such as the lips and eyebrows.</p>
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/kai_tri.jpg" style="width: 100%">Image A Mesh</p>
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/george_tri.jpg" style="width: 100%">Image B Mesh</p>
+                        <p style="clear: both;">
+                  
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="fc-tab-3">
+
+                  <div class="about-container">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h2>The <em>Mid-Way</em> Face</h2>
+                        <div class="under-line"></div>
+                        <p>Once the correspondences have been obtained, I compute the <b>Mid-Way Face</b> of the two images by doing the following:</p>
+                        <p>1. Compute the weighted average shape for some given weight <b>t</b> that ranges between <code>[0, 1]</code> and each point in both image A and B. In this case, the value I used was <b>t = 0.5 </b>.<br>The equation used was: <code> average_shape = t * image_A_points[i] + (1 - t) * image_B_points[i] </code></p>
+                        <p>2.Given the points for Image A, Image B, and the Average Shape, we use <b>Delauney Triangulation</b> to obtain a set of triangles for the corresponding points and calculate the inverse affine matrices for each triangle.Specifically, computing the affine transform from the target (in the average shape) back to the source image. This was done for each triangle in image A, and then for every triangle in image B. I then warped all the triangles from image A and B to the triangles in the Average Shape to obtain a warped image. </p>
+                        <p>3.The last step was to cross-dissolve the colors by finding the weighted color averages of Image A and Image B. Prior to this, I used <b>Photoshop</b> to alter the colors so that the same weight of <b>t = 0.5</b> could be used. <br>The equation used was: <code> mid_way_face[x, y] = t * image_A[xA, yA] + (1 - t) * image_B[xB, yB] </code> for each (x, y) pair in the Average Shape and the corresponding mapped pairs found from step 2.</p>
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 28%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/kai_start.jpg" style="width: 100%">Image A</p>
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 28%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/midWay.jpg" style="width: 100%">Mid-Way Face</p>
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 28%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/george.jpg" style="width: 100%">Image B</p>
+                        <p style="clear: both;">
+                        <p> I realized that the morph from myself to George Clooney was too seamless so I wanted to challenge my morph with a face that had different facial features. Take a look at the corresponding morphs along with a <b>special bonus morph</b> on the next section!</p>
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 28%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/kai_white.jpg" style="width: 100%">Image A</p>
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 28%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/midWay_Tommy.jpg" style="width: 100%">Mid-Way Face</p>
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 28%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/tommy.jpg" style="width: 100%">Image B</p>
+                        <p style="clear: both;">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="fc-tab-4">
+                
+                  <div class="about-container">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <h2>It's <em>Morphing</em> Time</h2>
+                        <div class="under-line"></div>
+                        <p>Using the algorithm used to find the Mid Way Face, we can vary the value of <b>t</b> between <code>[0, 1]</code> by a distribution of <b>45</b> frames. After obtaining 45 <b> T Way Faces </b>,I take each t as a timestep and create a gif of all 45 frames. The results are as follows:</p>
+                        <p> Since I used <b>60</b> points for this morph and had similar facial features, it is very difficult to tell exactly at what point I turn into George Clooney and vice versa.</p>
+                        <img src="gifs/morph_kai.gif">
+                        <p> While the two faces in this example were quite different, it goes to show that using <b>70 points</b> will still create a tight warp. I found it quite interesting how the morphed image's forehead presented the most change.</p>
+                        <img src="gifs/morph_tommy.gif">
+                        <p> Here I try to break the laws of physics by morphing myself into Morty Smith. Let's just say that you won't sleep at night after this one. </p>
+                        <img src="gifs/morph_morty.gif">
+                        <p> "There's an infinite number of realities Morty." - Rick Sanchez</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="fc-tab-5">
+                  
+                    <div class="about-container">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <h2>The <em>Mean</em> Face</h2>
+                          <div class="under-line"></div>
+                          <p> Using the algorithms previously mentioned, we can take a subset of faces of a given population and find the average/mean face. In this section, I chose to use the <b>Danes Set</b> which contained <b>30</b> male faces and <b>7</b> female faces. To obtain the mean face, I did the following: </p>
+                          <p>1. Compute the average face shape of the set of faces given the set of correspondence points for each face.</p>
+                          <p>Equation: <code> average_face_shape = sum(face_correspondence_points) / number_of_faces</code> </p>
+                          <p>2. Morph each face into the average shape we derived from step 1.</p>
+                          <p>3. Compute the average face as follows: <code> average_face = sum(morphed_faces) number_of_Faces</code> </p>
+                          <p> The result can be seen below. Due to the uneven distributation of male to female faces, the average face appears to have a more <b>male like appearance</b>. </p>
+                          <img src="images/average_face.jpg">
+                          <p>Here are some specific faces from the Dane Set morphed into the average face. Major changes that occurred were in the <b>overall face shape of people</b>. Person A had a thin face and as a result had his face stretched in the morph. Person B had many noticable changes since her face was wider but also her eyes and mouth were reshaped. Person C's changes were more noticable around the hair line.</p>
+                          <p style="float: left; font-size: 9pt; text-align: center; width: 28%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/01-1m.bmp" style="width: 100%">Person A</p>
+                          <p style="float: left; font-size: 9pt; text-align: center; width: 28%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/30-1f.bmp" style="width: 100%">Person B</p>
+                          <p style="float: left; font-size: 9pt; text-align: center; width: 28%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/27-1m.bmp" style="width: 100%">Person C</p>
+                          <p style="clear: both;">
+                          <p style="float: left; font-size: 9pt; text-align: center; width: 28%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/dane1_morph.jpg" style="width: 100%">Averaged A</p>
+                          <p style="float: left; font-size: 9pt; text-align: center; width: 28%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/dane2_morph.jpg" style="width: 100%">Averaged B</p>
+                          <p style="float: left; font-size: 9pt; text-align: center; width: 28%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/dane3_morph.jpg" style="width: 100%">Averaged C</p>
+                          <p style="clear: both;">
+                          <p> I also morphed my face to the average shape and morphed the average face to my face shape. Here are the results:</p>
+                          <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/kai_dane.jpg" style="width: 100%">My Face morphed into the Dane shape</p>
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/dane_kai.jpg" style="width: 100%">Average Dane Face morphed to my shape</p>
+                        <p style="clear: both;">
+                        </div>
+                      </div>
+                  </div>
+                </div>
+
+                <div class="fc-tab-6">
+                  
+                    <div class="about-container">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <h2><em>Caricatures</em></h2>
+                          <div class="under-line"></div>
+                          <p>By taking the difference of my face shape with that of the average Dane shape and multiplying it by some scalar <b>t</b>, we can then add it back to the average Dane shape to get a new shape that resembles that of a <b>caricature</b>.</p>
+                          <p>The equation for the caricature is as follows: <code> caricature_shape = t * (imA_points - average_points) + average_points.</code>. Notice that when <code>t < 0</code> my face gets squished while <code>t > 1</code> will expand my face.</p>
+                          <p style="float: left; font-size: 9pt; text-align: center; width: 28%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/car1_kai.jpg" style="width: 100%">t < 0</p>
+                          <p style="float: left; font-size: 9pt; text-align: center; width: 28%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/kai_dane.jpg" style="width: 100%">t = 0</p>
+                          <p style="float: left; font-size: 9pt; text-align: center; width: 28%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/car2_kai.jpg" style="width: 100%">t > 1</p>
+                          <p style="clear: both;">
+                        </div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+            <!-- End .HorizontalTab -->
+          
+          </div>
+          
+        </div>
+        
+      </div>
+
+    </section>
+    <!-- End HorizontalTab style 6 -->
+    
+
+      <footer>
+        <p>Copyright &copy; 2017 Karl Cempron </p>
+      </footer>
+    </div> <!-- /container -->        
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+
+        <script src="js/vendor/bootstrap.min.js"></script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/jquery.nicescroll.min.js"></script>
+        <script src="js/easyResponsiveTabs.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <script>
+            (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+            function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+            e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+            e.src='//www.google-analytics.com/analytics.js';
+            r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+            ga('create','UA-XXXXX-X','auto');ga('send','pageview');
+        </script>
+    
+
+    </body>
+</html>
