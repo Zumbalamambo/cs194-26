@@ -73,7 +73,7 @@ def main(directory):
 	## Part 2
 	### Calculate aperture
 	for i in range (0, 9):
-		getAvgShiftedImage(directory, 1, i, "./{}/aperature_{}".format("processed_" + directory, i))
+		getAvgShiftedImage(directory, 1, i, "./{}/aperture_{}".format("processed_" + directory, i))
 
 main("chess")
 main("rock")
