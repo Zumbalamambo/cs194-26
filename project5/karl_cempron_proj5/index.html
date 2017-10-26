@@ -93,17 +93,34 @@ Short HTML Template
                   <div class="about-container">
                     <div class="row">
                       <div class="col-md-12">
-                        <h2>Finding <em>Correspondences</em></h2>
+                        <h2>Depth <em>Refocusing</em></h2>
                         <div class="under-line"></div>
-                        <p>Given two images, we define the pairs of corresponding points by hand, specifically targetting features that exist in both faces. Ideally, having more corresponding pairs will create a better fit of the morph from image A to image B. In this example, I chose myself as Image A and George Clooney as Image B.</p>
-                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/kai_start.jpg" style="width: 100%">Image A</p>
-                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/george.jpg" style="width: 100%">Image B</p>
+                        <p>The objects which are far away from the camera do not vary their position significantly when the camera moves around while keeping the optical axis direction unchanged. The nearby objects, on the other hand, vary their position significantly across images. Averaging all the images in the grid without any shifting will produce an image which is sharp around the far-away objects but blurry around the nearby ones. 
+                        <p>A general equation is as follows: <code> averaged_image = sum(image_list) / len(image_list) </code></p> 
+                        <p>Here are examples using <b>289 images</b> taken from a <b>17 x 17</b> grid:</p>
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 95%; margin-right: 1%; margin-bottom: 0.5em;"><img src="processed_chess/shifted_scale1_average.png" style="width: 100%">Averaged Chess Board</p>
                         <p style="clear: both;">
-                        <p>Here are the triangular meshes for each image using <b>60</b> points. Since the exterior of our face shapes matches already, I decided to focus primarily on the internal features such as the lips and eyebrows.</p>
-                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/kai_tri.jpg" style="width: 100%">Image A Mesh</p>
-                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/george_tri.jpg" style="width: 100%">Image B Mesh</p>
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 95%; margin-right: 1%; margin-bottom: 0.5em;"><img src="processed_rock/shifted_scale1_average.png" style="width: 100%">Averaged Rock Piece</p>
                         <p style="clear: both;">
-                  
+
+                        <p>Similarly, shifting the images to a centralized reference multiplied by a scalar <code>w</code> such that<br>
+                        <code>(x_shifted, y_shifted) = w * (x, y)</code>, along with averaging, allows one to focus on object at different depths.</p>
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="processed_chess/shifted_scale1_average.png" style="width: 100%">w = 1</p>
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="processed_chess/shifted_scale2_average.png" style="width: 100%">w = 2</p>
+                        <p style="clear: both;">
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="processed_chess/shifted_scale3_average.png" style="width: 100%">w = 3</p>
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="processed_chess/shifted_scale4_average.png" style="width: 100%">w = 4</p>
+                        <p style="clear: both;">
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="processed_rock/shifted_scale1_average.png" style="width: 100%">w = 1</p>
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="processed_rock/shifted_scale2_average.png" style="width: 100%">w = 2</p>
+                        <p style="clear: both;">
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="processed_rock/shifted_scale3_average.png" style="width: 100%">w = 3</p>
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="processed_rock/shifted_scale4_average.png" style="width: 100%">w = 4</p>
+                        <p style="clear: both;">
+                        <p>The resulting gifs show a sequence of depth refocusing where focus shifts from <b>top to bottom</b> as w inreases from <b>1 to 4.</b> Notice that as w reaches the bounds mentioned, as is the case with <code>w = 4</code>, focus is directed towards the edge causing majority of the image to be blurred.</p>
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="gifs/chess_focus.gif" style="width: 100%">Chess Refocusing</p>
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="gifs/rock_focus.gif" style="width: 100%">Rock Refocusing</p>
+                        <p style="clear: both;">
                       </div>
                     </div>
                   </div>
@@ -153,56 +170,6 @@ Short HTML Template
                     </div>
                   </div>
                 </div>
-                <div class="fc-tab-5">
-                  
-                    <div class="about-container">
-                      <div class="row">
-                        <div class="col-md-12">
-                          <h2>The <em>Mean</em> Face</h2>
-                          <div class="under-line"></div>
-                          <p> Using the algorithms previously mentioned, we can take a subset of faces of a given population and find the average/mean face. In this section, I chose to use the <b>Danes Set</b> which contained <b>30</b> male faces and <b>7</b> female faces. To obtain the mean face, I did the following: </p>
-                          <p>1. Compute the average face shape of the set of faces given the set of correspondence points for each face.</p>
-                          <p>Equation: <code> average_face_shape = sum(face_correspondence_points) / number_of_faces</code> </p>
-                          <p>2. Morph each face into the average shape we derived from step 1.</p>
-                          <p>3. Compute the average face as follows: <code> average_face = sum(morphed_faces) number_of_Faces</code> </p>
-                          <p> The result can be seen below. Due to the uneven distributation of male to female faces, the average face appears to have a more <b>male like appearance</b>. </p>
-                          <img src="images/average_face.jpg">
-                          <p>Here are some specific faces from the Dane Set morphed into the average face. Major changes that occurred were in the <b>overall face shape of people</b>. Person A had a thin face and as a result had his face stretched in the morph. Person B had many noticable changes since her face was wider but also her eyes and mouth were reshaped. Person C's changes were more noticable around the hair line.</p>
-                          <p style="float: left; font-size: 9pt; text-align: center; width: 28%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/01-1m.bmp" style="width: 100%">Person A</p>
-                          <p style="float: left; font-size: 9pt; text-align: center; width: 28%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/30-1f.bmp" style="width: 100%">Person B</p>
-                          <p style="float: left; font-size: 9pt; text-align: center; width: 28%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/27-1m.bmp" style="width: 100%">Person C</p>
-                          <p style="clear: both;">
-                          <p style="float: left; font-size: 9pt; text-align: center; width: 28%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/dane1_morph.jpg" style="width: 100%">Averaged A</p>
-                          <p style="float: left; font-size: 9pt; text-align: center; width: 28%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/dane2_morph.jpg" style="width: 100%">Averaged B</p>
-                          <p style="float: left; font-size: 9pt; text-align: center; width: 28%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/dane3_morph.jpg" style="width: 100%">Averaged C</p>
-                          <p style="clear: both;">
-                          <p> I also morphed my face to the average shape and morphed the average face to my face shape. Here are the results:</p>
-                          <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/kai_dane.jpg" style="width: 100%">My Face morphed into the Dane shape</p>
-                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/dane_kai.jpg" style="width: 100%">Average Dane Face morphed to my shape</p>
-                        <p style="clear: both;">
-                        </div>
-                      </div>
-                  </div>
-                </div>
-
-                <div class="fc-tab-6">
-                  
-                    <div class="about-container">
-                      <div class="row">
-                        <div class="col-md-12">
-                          <h2><em>Caricatures</em></h2>
-                          <div class="under-line"></div>
-                          <p>By taking the difference of my face shape with that of the average Dane shape and multiplying it by some scalar <b>t</b>, we can then add it back to the average Dane shape to get a new shape that resembles that of a <b>caricature</b>.</p>
-                          <p>The equation for the caricature is as follows: <code> caricature_shape = t * (imA_points - average_points) + average_points.</code>. Notice that when <code>t < 0</code> my face gets squished while <code>t > 1</code> will expand my face.</p>
-                          <p style="float: left; font-size: 9pt; text-align: center; width: 28%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/car1_kai.jpg" style="width: 100%">t < 0</p>
-                          <p style="float: left; font-size: 9pt; text-align: center; width: 28%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/kai_dane.jpg" style="width: 100%">t = 0</p>
-                          <p style="float: left; font-size: 9pt; text-align: center; width: 28%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/car2_kai.jpg" style="width: 100%">t > 1</p>
-                          <p style="clear: both;">
-                        </div>
-                      </div>
-                  </div>
-                </div>
-            </div>
             <!-- End .HorizontalTab -->
           
           </div>
