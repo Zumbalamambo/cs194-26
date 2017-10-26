@@ -97,7 +97,7 @@ Short HTML Template
                         <div class="under-line"></div>
                         <p>The objects which are far away from the camera do not vary their position significantly when the camera moves around while keeping the optical axis direction unchanged. The nearby objects, on the other hand, vary their position significantly across images. Averaging all the images in the grid without any shifting will produce an image which is sharp around the far-away objects but blurry around the nearby ones. 
                         <p>A general equation is as follows: <code> averaged_image = sum(image_list) / len(image_list) </code></p> 
-                        <p>Here are examples using <b>289 images</b> taken from a <b>17 x 17</b> grid:</p>
+                        <p>Here are examples using <b>289 images</b> taken from a <b>17 x 17</b> camera grid:</p>
                         <p style="float: left; font-size: 9pt; text-align: center; width: 95%; margin-right: 1%; margin-bottom: 0.5em;"><img src="processed_chess/shifted_scale1_average.png" style="width: 100%">Averaged Chess Board</p>
                         <p style="clear: both;">
                         <p style="float: left; font-size: 9pt; text-align: center; width: 95%; margin-right: 1%; margin-bottom: 0.5em;"><img src="processed_rock/shifted_scale1_average.png" style="width: 100%">Averaged Rock Piece</p>
@@ -118,8 +118,8 @@ Short HTML Template
                         <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="processed_rock/shifted_scale4_average.png" style="width: 100%">w = 4</p>
                         <p style="clear: both;">
                         <p>The resulting gifs show a sequence of depth refocusing where focus shifts from <b>top to bottom</b> as w inreases from <b>1 to 4.</b> Notice that as w reaches the bounds mentioned, as is the case with <code>w = 4</code>, focus is directed towards the edge causing majority of the image to be blurred.</p>
-                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="gifs/chess_focus.gif" style="width: 100%">Chess Refocusing</p>
-                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="gifs/rock_focus.gif" style="width: 100%">Rock Refocusing</p>
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="gifs/chess_focus.gif" style="width: 100%">Chess Refocusing Animation</p>
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="gifs/rock_focus.gif" style="width: 100%">Rock Refocusing Animation</p>
                         <p style="clear: both;">
                       </div>
                     </div>
@@ -131,20 +131,29 @@ Short HTML Template
                   <div class="about-container">
                     <div class="row">
                       <div class="col-md-12">
-                        <h2>The <em>Mid-Way</em> Face</h2>
+                        <h2><em>Aperture</em> Adjustment</h2>
                         <div class="under-line"></div>
-                        <p>Once the correspondences have been obtained, I compute the <b>Mid-Way Face</b> of the two images by doing the following:</p>
-                        <p>1. Compute the weighted average shape for some given weight <b>t</b> that ranges between <code>[0, 1]</code> and each point in both image A and B. In this case, the value I used was <b>t = 0.5 </b>.<br>The equation used was: <code> average_shape = t * image_A_points[i] + (1 - t) * image_B_points[i] </code></p>
-                        <p>2.Given the points for Image A, Image B, and the Average Shape, we use <b>Delauney Triangulation</b> to obtain a set of triangles for the corresponding points and calculate the inverse affine matrices for each triangle.Specifically, computing the affine transform from the target (in the average shape) back to the source image. This was done for each triangle in image A, and then for every triangle in image B. I then warped all the triangles from image A and B to the triangles in the Average Shape to obtain a warped image. </p>
-                        <p>3.The last step was to cross-dissolve the colors by finding the weighted color averages of Image A and Image B. Prior to this, I used <b>Photoshop</b> to alter the colors so that the same weight of <b>t = 0.5</b> could be used. <br>The equation used was: <code> mid_way_face[x, y] = t * image_A[xA, yA] + (1 - t) * image_B[xB, yB] </code> for each (x, y) pair in the Average Shape and the corresponding mapped pairs found from step 2.</p>
-                        <p style="float: left; font-size: 9pt; text-align: center; width: 28%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/kai_start.jpg" style="width: 100%">Image A</p>
-                        <p style="float: left; font-size: 9pt; text-align: center; width: 28%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/midWay.jpg" style="width: 100%">Mid-Way Face</p>
-                        <p style="float: left; font-size: 9pt; text-align: center; width: 28%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/george.jpg" style="width: 100%">Image B</p>
+                        <p>For aperture adjustment, we try to emulate a <b>camera's aperture system</b> with effective aperture sizes.<br>
+                        The larger the aperture, the more light rays with larger angles will enter the imaging system. The result is an image which is blurred everywhere except where the light rays primarily converge.<br>
+                        Conversely, a lower aperture will allow less light which will produce a focus across the whole image. Averaging a large number of images sampled over the grid perpendicular to the optical axis mimics a camera with a much larger aperture. Using fewer images results in an image that mimics a smaller aperture.</p>
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 95%; margin-right: 1%; margin-bottom: 0.5em;"><img src="gifs/aperture.gif" style="width: 100%">Aperture Size Animation</p>
                         <p style="clear: both;">
-                        <p> I realized that the morph from myself to George Clooney was too seamless so I wanted to challenge my morph with a face that had different facial features. Take a look at the corresponding morphs along with a <b>special bonus morph</b> on the next section!</p>
-                        <p style="float: left; font-size: 9pt; text-align: center; width: 28%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/kai_white.jpg" style="width: 100%">Image A</p>
-                        <p style="float: left; font-size: 9pt; text-align: center; width: 28%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/midWay_Tommy.jpg" style="width: 100%">Mid-Way Face</p>
-                        <p style="float: left; font-size: 9pt; text-align: center; width: 28%; margin-right: 1%; margin-bottom: 0.5em;"><img src="images/tommy.jpg" style="width: 100%">Image B</p>
+                        <p>The steps taken in creating a digital aperture effect are as follows:<br>
+                        1. Choose an <b>effective radius</b> for which we can select which images to shift and average on. In the examples shown, we select the origin to be the image corresponding to <code>origin = cameragrid[8][8]</code>. Any image that has a camera grid coordinate within the radius shall be included in the shifting and averaging.<br>
+                        2. Choose an appropriate scaler <b>w</b> to select where on the image we want to apply <b>depth refocusing</b>.<br>
+                        3. Average over the subset of shifted images.</p>
+
+                        <p>Here the results of applying the digital aperture technique with the lowest aperture and the highest aperture. </p>
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="processed_chess/aperture_0_average.png" style="width: 100%">radius = 1, w = 2</p>
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="processed_chess/aperture_8_average.png" style="width: 100%">radius = 9, w = 2</p>
+                        <p style="clear: both;">
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="processed_rock/aperture_0_average.png" style="width: 100%">radius = 1, w = 1</p>
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="processed_rock/aperture_8_average.png" style="width: 100%">radius = 9, w = 1</p>
+                        <p style="clear: both;">
+
+                        <p>The corresponding gifs display the change in aperture with radius sizes ranging <code>[1, 9]</code>.
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="gifs/chess_aperture.gif" style="width: 100%">Chess Aperture Animation</p>
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="gifs/rock_aperture.gif" style="width: 100%">Rock Aperture Animation</p>
                         <p style="clear: both;">
                       </div>
                     </div>
