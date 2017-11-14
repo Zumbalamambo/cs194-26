@@ -64,7 +64,7 @@ def findAffine(triMid, im_points, mid_points):
 	return affineMatrices
 
 def computeAffine(tri1, tri2):
-	A = np.matrix("{} {} 1 0 0 0;".format(tri1[0][0], tri1[0][1])
+	A = np.matrix("{} {} 1 0 0 0;".format(tri1[0][0], tri1[0][1])()
 				 +"0 0 0 {} {} 1;".format(tri1[0][0], tri1[0][1])
 				 +"{} {} 1 0 0 0;".format(tri1[1][0], tri1[1][1])
 				 +"0 0 0 {} {} 1;".format(tri1[1][0], tri1[1][1])
@@ -82,7 +82,7 @@ def findMidWayFace(imA, imB, imA_points, imB_points, imMid_points, triMid, triA,
 	affineAMatrices = findAffine(triMid, imA_points, imMid_points)
 	affineBMatrices = findAffine(triMid, imB_points, imMid_points)
 
-	morphedIm = np.zeros((imA.shape[0], imA.shape[1], 3), dtype="float32")
+	
 	for y in range(imA.shape[0]):
 		for x in range(imA.shape[1]):
 			tri_index = tsearch(triMid, (x, y))
@@ -183,10 +183,10 @@ def warpMeanFace(im_names, im_points, average_points, saved_name, t = 1):
 
 def main():
 	### Uncomment this section to apply morphing
-	# imA = plt.imread("kai_start.jpg")
-	# imB = plt.imread("george_small.jpg")
+	imA = plt.imread("kai_start.jpg")
+	imB = plt.imread("george_small.jpg")
 
-	# imA_points, imB_points = findCorrespondences(imA, imB, "kai")
+	imA_points, imB_points = findCorrespondences(imA, imB, "kai")
 	# morphed_im = morph(imA, imB, np.array(imA_points), np.array(imB_points))
 
 	### Uncomment this section to apply the mean face
