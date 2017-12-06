@@ -8,15 +8,12 @@ import skimage.io as skio
 def create_horizontal_mask(im, fname):
 	plt.imshow(im)
 	y = int(plt.ginput(1, timeout = 0)[0][1])
-	
 	top = np.reshape(np.linspace(1, 0, y), (y, 1))
 	bottom = np.reshape(np.linspace(0, 1, im.shape[0] - y), (im.shape[0] - y, 1))
-
 	blended_top = np.tile(top, (1, im.shape[1]))
 	blended_bottom = np.tile(bottom, (1, im.shape[1]))
 	mask = np.vstack((blended_top, blended_bottom))
 	skio.imsave("mask_{}.jpg".format(fname), mask)
-
 	return mask
 
 def prepare_stack(im, factor):
