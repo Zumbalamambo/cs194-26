@@ -71,12 +71,12 @@ Short HTML Template
                           <div class="left-line"></div>  
                           <h2>The <em>Final</em> Project</h2>
                           <p> Karl Cempron: CS194-26-AEG </p>
-                          <p> The purpose of this project is to explore some more cool imaging ideas. In particular, I chose to attempt the vertigo shot as well as applying tilt shift effects to images.</p>
+                          <p> The purpose of this project is to explore some additional imaging techniques. In particular, I chose to attempt the vertigo shot as well as applying tilt shift effects to images.</p>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="right-content">
-                          <p style="font-size: 14pt; text-align: center;"><img src="thames_panorama_cropped.png" style="width: 100%">A sample panorama!</p>
+                          <p style="font-size: 14pt; text-align: center;"><img src="./images/stairs.gif" style="width: 100%">A classic Vertigo Shot!</p>
                           <p style="clear: both;">
                         </div>
                       </div>
@@ -90,12 +90,28 @@ Short HTML Template
                   <div class="about-container">
                     <div class="row">
                       <div class="col-md-12">
-                        <h2>The <em>Homography</em> Matrix</h2>
+                        <h2>The <em>Vertigo</em> Shot</h2>
                         <div class="under-line"></div>
-                        <p>In projective geometry, a homography is an isomorphism of projective spaces, induced by an isomorphism of the vector spaces from which they are derived. By limiting the movement of our camera to rotation we are able to generate different perspectives within an image. We can select <b>correspondence points</b> in order to find out how an image was warped, and then rectify them such that the images exist on the same 3d plane. To do this we needed to solve a system of linear equations with <code>8 unknown variables.</code> Because each correspondence gives us 2 equations each, we could technically solve it with only four correspondences, but to account for possible noise and other shifts more are used to overconstrain the system and is then solved using the least-squares method.</p>
-                        <p style="float: left; font-size: 9pt; text-align: center; width: 95%; margin-right: 1%; margin-bottom: 0.5em;"><img src="homography.png" style="width: 100%">Linear Equation solving for 8 unknowns.</p>
+                        <p>The Vertigo shot is a video camera effect first utilized in Alfred Hitchcock's movie Vertigo. This effect relies on changing the camera's field of view, while  keeping the subject the same size within the frame. This results in a warping sensation that makes the background of the subject seem either <b>deeper</b> or more <b>shallow</b>.</p>
+
+                        <p>To emulate the technique in still photos, I captured a series of photos, stepping back a small distance and zoomed in slightly on the subject. I then used Photoshop to align the photos more precisely.</p>
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 95%; margin-right: 1%; margin-bottom: 0.5em;"><img src="./images/vertigo/candle.gif" style="width: 100%">Candle Hall Vertigo Shot.</p>
                         <p style="clear: both;">
-                        <p style="float: left; font-size: 9pt; text-align: center; width: 95%; margin-right: 1%; margin-bottom: 0.5em;"><img src="lstsqr.png" style="width: 100%">Least Squares approach</p>
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 25%; margin-right: 1%; margin-bottom: 0.5em;"><img src="./images/vertigo/candle_1.jpg" style="width: 100%">Shot 1</p>
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 25%; margin-right: 1%; margin-bottom: 0.5em;"><img src="./images/vertigo/candle_2.jpg" style="width: 100%">Shot 2</p>
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 25%; margin-right: 1%; margin-bottom: 0.5em;"><img src="./images/vertigo/candle_3.jpg" style="width: 100%">Shot 3</p>
+                        <p style="clear: both;">
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="./images/vertigo/candle_4.jpg" style="width: 100%">Shot 4</p>
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="./images/vertigo/candle_5.jpg" style="width: 100%">Shot 5</p>
+                        <p style="clear: both;">
+
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 95%; margin-right: 1%; margin-bottom: 0.5em;"><img src="./images/vertigo/bottle.gif" style="width: 100%">LBottle Vertigo Shot</p>
+                        <p style="clear: both;">
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="./images/vertigo/bottle_1.jpg" style="width: 100%">Shot 1</p>
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="./images/vertigo/bottle_2.jpg" style="width: 100%">Shot 2</p>
+                        <p style="clear: both;">
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="./images/vertigo/bottle_3.jpg" style="width: 100%">Shot 3</p>
+                        <p style="float: left; font-size: 9pt; text-align: center; width: 40%; margin-right: 1%; margin-bottom: 0.5em;"><img src="./images/vertigo/bottle_4.jpg" style="width: 100%">Shot 4</p>
                         <p style="clear: both;">
                       </div>
                     </div>
